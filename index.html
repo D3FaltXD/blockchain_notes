@@ -57,6 +57,47 @@
         <h3>CSC 306</h3>
         <hr>
         </div>
+        <div class="download-container">
+            <h2>Select Files to Download</h2>
+            <form id="downloadForm">
+                <div class="file-list">
+                    <label><input type="checkbox" name="files" value="csc403/Supplement/toolaudit/1.sol"> Tool Audit 1</label>
+                    <label><input type="checkbox" name="files" value="csc403/Supplement/toolaudit/2.sol"> Tool Audit 2</label>
+                    <label><input type="checkbox" name="files" value="csc403/Supplement/toolaudit/3.sol"> Tool Audit 3</label>
+                    <label><input type="checkbox" name="files" value="csc403/Supplement/toolaudit/4.sol"> Tool Audit 4</label>
+                    <label><input type="checkbox" name="files" value="csc403/Supplement/toolaudit/5.sol"> Tool Audit 5</label>
+                    <label><input type="checkbox" name="files" value="csc403/Supplement/toolaudit/6.sol"> Tool Audit 6</label>
+                    <label><input type="checkbox" name="files" value="csc403/Supplement/toolaudit/7.sol"> Tool Audit 7</label>
+                    <label><input type="checkbox" name="files" value="csc403/Supplement/toolaudit/8.sol"> Tool Audit 8</label>
+                </div>
+                <button type="button" class="download-button" onclick="downloadFiles()">Download Selected Files</button>
+            </form>
+        </div>
+        
+        <script>
+            function downloadFiles() {
+                const form = document.getElementById('downloadForm');
+                const selectedFiles = Array.from(form.elements['files'])
+                    .filter(checkbox => checkbox.checked)
+                    .map(checkbox => checkbox.value);
+
+                if (selectedFiles.length === 0) {
+                    alert('Please select at least one file to download.');
+                    return;
+                }
+
+                selectedFiles.forEach((file, index) => {
+                    setTimeout(() => {
+                        const link = document.createElement('a');
+                        link.href = file;
+                        link.download = file.split('/').pop(); // Extracts the filename from the path
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }, index * 1000); // 1-second delay between each download
+                });
+            }
+        </script>
         <ul>
             <li><a href="Unit 1A.html" target="_blank" rel="noopener noreferrer">Unit 1A</a></li>
             <li><a href="Unit 1B.html" target="_blank" rel="noopener noreferrer">Unit 1B</a></li>
