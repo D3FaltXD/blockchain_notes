@@ -50,6 +50,67 @@
         .download-button:hover {
             background-color: #0056b3;
         }
+
+        /* Animated Globe Styles */
+        .animated-globe {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #4CAF50, #2196F3, #00BCD4, #4CAF50);
+            background-size: 200% 200%;
+            position: relative;
+            display: inline-block;
+            animation: rotateGlobe 4s linear infinite, shimmer 3s ease-in-out infinite alternate;
+            margin-left: 15px;
+            vertical-align: middle;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .animated-globe::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), transparent 50%),
+                        linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+        }
+
+        .animated-globe::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 
+                -8px -8px 0 rgba(255,255,255,0.6),
+                8px 8px 0 rgba(255,255,255,0.4),
+                -12px 4px 0 rgba(255,255,255,0.3),
+                6px -10px 0 rgba(255,255,255,0.5);
+        }
+
+        @keyframes rotateGlobe {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
     </style>
 </head>
 <div style="text-align: center;">
@@ -69,7 +130,10 @@
             <div>
                 <img src="image.png" alt="Image">
             </div>
-            <h1>Welcome to the Advanced Blockchain Concepts</h1>
+            <div class="header-content">
+                <h1>Welcome to the Advanced Blockchain Concepts</h1>
+                <div class="animated-globe"></div>
+            </div>
         </div>
         <div style="background-color: #e9ecef; padding: 20px; text-align: center; margin-top: 20px;">
             <div>
