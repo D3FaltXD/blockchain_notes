@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Tetris - Blockchain Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <header class="header">
+            <h1 class="title">
+                <span class="title-main">TETRIS</span>
+                <span class="title-sub">Modern Edition</span>
+            </h1>
+            <nav class="nav">
+                <a href="../index.html" class="back-link">← Back to Notes</a>
+            </nav>
+        </header>
+
+        <div class="game-wrapper">
+            <div class="left-panel">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-label">Score</span>
+                        <span class="stat-value" id="score">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Level</span>
+                        <span class="stat-value" id="level">1</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Lines</span>
+                        <span class="stat-value" id="lines">0</span>
+                    </div>
+                </div>
+
+                <div class="next-piece-container">
+                    <h3 class="next-title">Next Piece</h3>
+                    <canvas id="next-canvas" width="120" height="120"></canvas>
+                </div>
+
+                <div class="controls-info">
+                    <h3 class="controls-title">Controls</h3>
+                    <div class="control-item">
+                        <span class="key">←→</span>
+                        <span class="action">Move</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">↓</span>
+                        <span class="action">Soft Drop</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">↑</span>
+                        <span class="action">Rotate</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">Space</span>
+                        <span class="action">Hard Drop</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">P</span>
+                        <span class="action">Pause</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-board-container">
+                <canvas id="game-canvas" width="300" height="600"></canvas>
+                <div class="game-overlay" id="game-overlay">
+                    <div class="overlay-content">
+                        <h2 id="overlay-title">Press START to Begin</h2>
+                        <p id="overlay-message">Use arrow keys to control pieces</p>
+                        <button id="start-btn" class="game-btn">START GAME</button>
+                        <button id="restart-btn" class="game-btn" style="display: none;">RESTART</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="hold-piece-container">
+                    <h3 class="hold-title">Hold Piece</h3>
+                    <canvas id="hold-canvas" width="120" height="120"></canvas>
+                    <div class="hold-info">Press C to hold</div>
+                </div>
+
+                <div class="game-controls">
+                    <button id="pause-btn" class="control-btn">
+                        <span class="btn-icon">⏸</span>
+                        <span class="btn-text">Pause</span>
+                    </button>
+                    <button id="sound-btn" class="control-btn">
+                        <span class="btn-icon">🔊</span>
+                        <span class="btn-text">Sound</span>
+                    </button>
+                </div>
+
+                <div class="high-scores">
+                    <h3 class="scores-title">High Scores</h3>
+                    <div class="score-list" id="high-scores-list">
+                        <div class="score-entry">
+                            <span class="rank">1.</span>
+                            <span class="score">0</span>
+                        </div>
+                        <div class="score-entry">
+                            <span class="rank">2.</span>
+                            <span class="score">0</span>
+                        </div>
+                        <div class="score-entry">
+                            <span class="rank">3.</span>
+                            <span class="score">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
